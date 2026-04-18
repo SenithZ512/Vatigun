@@ -1,7 +1,14 @@
 fileFormatVersion: 2
-guid: 3d2a58aab02fcc64987e27a29a82ca58
+guid: 7c6407714a23cea44a012beea82f89f4
 DefaultImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 189884
+  packageName: Modular First Person Controller
+  packageVersion: 1.0.1
+  assetPath: Assets/ModularFirstPersonController/DemoScene/Demo.unity
+  uploadId: 428261
