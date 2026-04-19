@@ -9,15 +9,13 @@ public class CrossBowMode1 : MonoBehaviour,IGun
 
    
 
-    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit)
+    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
         GameObject bulletObj = Objectpool.Instance.SpawnFromPool("PistolBullet", gunpoint.position, gunpoint.rotation);
         if (bulletObj.TryGetComponent<Bullet>(out Bullet bulletScript))
         {
-
-
             bulletScript.Setup(finalDamage, isCrit);
-
+            bulletScript.SetExtraVisitor(extraVisitor);
 
             bulletScript.OnobjectSpawn();
 

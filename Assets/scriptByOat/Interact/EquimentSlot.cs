@@ -91,7 +91,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
        
 
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnControllerColliderHit(ControllerColliderHit collision)
     {
         if (collision.gameObject.TryGetComponent<Gun>(out Gun _gun))
         {
@@ -100,15 +100,16 @@ public class EquimentSlot : MonoBehaviour,IThrow
             _gun.gameObject.transform.localRotation = HoldingPoint.transform.localRotation;
             _gun.gameObject.transform.SetParent(HoldingPoint.transform);
             _gun.GetComponent<Collider>().enabled = false;
-            
+
             _gun.GetComponent<Rigidbody>().isKinematic = true;
             AddGun(_gun.gameObject);
         }
-        if(collision.gameObject.TryGetComponent<IEffectPickUp> (out IEffectPickUp effectPickUp))
+        if (collision.gameObject.TryGetComponent<IEffectPickUp>(out IEffectPickUp effectPickUp))
         {
             effectPickUp.Onpickup(this);
         }
     }
+  
     public void SwapToPreviousGun()
     {
       

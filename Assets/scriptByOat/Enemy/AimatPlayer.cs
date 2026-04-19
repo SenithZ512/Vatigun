@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class AimatPlayer : MonoBehaviour
 {
-    private Transform m_Player;
+    public Transform m_Player;
     private void Start()
     {
-        m_Player = GameObject.FindGameObjectWithTag("Player").transform;
+        if(m_Player == null)
+        {
+            m_Player = GameObject.FindGameObjectWithTag("Player").transform;
+        }
+     
     }
     public void Aim()
     {

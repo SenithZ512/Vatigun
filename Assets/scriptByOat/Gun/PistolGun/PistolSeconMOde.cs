@@ -11,7 +11,7 @@ public class PistolSeconMode : MonoBehaviour, IGun
    
    
 
-    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit)
+    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
        
         Objectpool.Instance.SpawnFromPool("PistolBullet", gunpoint.position, gunpoint.rotation);

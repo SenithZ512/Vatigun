@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 8387140393090711453}
   - component: {fileID: 2408931331067277715}
   - component: {fileID: 609494317113389534}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: Roket_bullet
   m_TagString: Bullet
   m_Icon: {fileID: 0}

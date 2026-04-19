@@ -8,12 +8,8 @@ public class ASR_mode1 : MonoBehaviour, IGun
 
     public string ModeName { get => _modename; }
 
-   
-
-  
-    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit)
+    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
-
         Debug.Log("ASR_mod1");
     }
 }

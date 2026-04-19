@@ -102,7 +102,7 @@ GameObject:
   - component: {fileID: 2408931331067277715}
   - component: {fileID: 609494317113389534}
   - component: {fileID: 6291963863005860166}
-  m_Layer: 8
+  m_Layer: 7
   m_Name: PistolBullet_prefab
   m_TagString: Bullet
   m_Icon: {fileID: 0}

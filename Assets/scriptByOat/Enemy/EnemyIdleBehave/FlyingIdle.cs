@@ -38,10 +38,16 @@ public class FlyingIdle : MonoBehaviour, IEnemyIdleBehave
             else if (currentDistance > TargetHeight + 0.5f)
             {
 
-                state.rb.AddForce(Vector3.down * hoverForce * 0.5f, ForceMode.Acceleration);
+                 state.rb.AddForce(Vector3.down * hoverForce * 0.5f, ForceMode.Acceleration);
+               
                
             }
-          
+            else
+            {
+               
+                state.rb.AddForce(Vector3.down * hoverForce, ForceMode.Acceleration);
+            }
+
         }
         Vector3 horizontalVel = state.rb.linearVelocity;
         horizontalVel.x = Mathf.Lerp(horizontalVel.x, 0, Time.deltaTime * 5f);

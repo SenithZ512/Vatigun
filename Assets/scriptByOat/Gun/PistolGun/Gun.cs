@@ -27,8 +27,6 @@ public class Gun : MonoBehaviour, IThrow
         switch (Type)
         {
             case "AssaltRifle":
-                
-
                 mode1 = new ASR_mode1();
                 mode2 = new ASR_mode2();
                 currentMode = mode1;
@@ -48,7 +46,7 @@ public class Gun : MonoBehaviour, IThrow
                 break;
             case "CrossBow":
                 mode1 = GetComponent<CrossBowMode1>();
-                currentMode = mode1;
+                currentMode = new BulletArmorBreaker(mode1);
                 break;
             case "RocketLauncher":
                 mode1 = GetComponent<RockeLaunderMode>();

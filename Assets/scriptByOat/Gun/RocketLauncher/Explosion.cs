@@ -42,7 +42,10 @@ public class Explosion : MonoBehaviour
                 }
                 if(rb.gameObject.TryGetComponent<EnemyStateManager>(out EnemyStateManager enemyStateManager))
                 {
-                    enemyStateManager.SwitchState(enemyStateManager._Stun);
+                    if (enemyStateManager.currentState != null && enemyStateManager.currentState != enemyStateManager._Death)
+                    {
+                        enemyStateManager.SwitchState(enemyStateManager._Stun);
+                    }
                 }
            
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius,3f);
@@ -66,6 +69,7 @@ public class Explosion : MonoBehaviour
     {
         if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
+            
             rb.isKinematic = false;
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
