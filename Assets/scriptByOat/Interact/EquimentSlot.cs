@@ -242,6 +242,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
     {
         foreach (GameObject gunObj in gunList)
         {
+            if(gunObj == null) continue;
             gunObj.GetComponent<Gun>().RefreshGunStats();
         }
     }
