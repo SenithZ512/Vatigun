@@ -5,6 +5,6 @@ using UnityEngine;
 public interface IGun 
 {
     string ModeName { get; }
-    void shoot(Transform gunpoint,GunTypeSo Gundata, float finalDamage, bool isCrit);
+    void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null);
 
 }

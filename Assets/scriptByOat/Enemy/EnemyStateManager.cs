@@ -26,10 +26,11 @@ public class EnemyStateManager : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
+        currentState = _Idle;
     }
     private void Start()
     {
-        currentState = _Idle;
+       
          currentState.OnEnterState(this);
     }
     private void Update()
@@ -39,11 +40,18 @@ public class EnemyStateManager : MonoBehaviour
     }
     public void SwitchState(EnemyBaseState state)
     {
-        currentState.OnExitState(this);
+        if (currentState != null)
+        {
+            currentState.OnExitState(this);
+        }
         currentState = state;
         state.OnEnterState(this);
         currentStateName = currentState.GetType().Name;
         Debug.Log("in state"+ currentState);
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+       
     }
     private void OnDrawGizmos()
     {

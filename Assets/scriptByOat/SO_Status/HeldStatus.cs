@@ -11,10 +11,16 @@ public class HeldStatus : MonoBehaviour,IElement
     public float _armor ; 
     public float _speed ;
     private IOndeath ondeath;
+    public IStatusSource _statusSource { get; private set; }
+    public bool isPlayer = false;
     private void Start()
     {
-        _health = status.Health;
-        _armor = status.Armor;
+        if (isPlayer)
+            _statusSource = new PlayerUpgradeAdapter(status);
+        else
+            _statusSource = new SO_StatusAdapter(status);
+        _health = _statusSource.GetHealth();
+        _armor = _statusSource.GetArmor();
         _speed = status.speed;
         GameEvent.UpdatePLayerStatus?.Invoke();
         ondeath = GetComponent<IOndeath>();

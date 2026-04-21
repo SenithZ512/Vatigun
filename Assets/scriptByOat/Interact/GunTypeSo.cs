@@ -1,5 +1,5 @@
 using System.Collections;
-using System.Collections.Generic;
+
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Gun Type", menuName = "Shooter/Gun Type")]
@@ -12,4 +12,5 @@ public class GunTypeSo : ScriptableObject
     public int MaxCapacity;
     public int MaxAmmoCanTake;
     public float ReloadTime = 2f;
+    public int AmmoBonusPerLevel = 20;
 }

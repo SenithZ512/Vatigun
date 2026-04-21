@@ -14,21 +14,17 @@ public class Gun : MonoBehaviour, IThrow
     [SerializeField] private Transform GunPoint;
     public int currentAmmo;
     public int AllAmmoleft;
-   
-   
+
+    private IGunSource gunSource ;
 
     private bool Isreload;
     private void Start()
     {
         Type = guntype.GunTypename;
-        currentAmmo = guntype.MaxCapacity;
-        AllAmmoleft = guntype.MaxAmmoCanTake;
        
-        switch (Type)
+            switch (Type)
         {
             case "AssaltRifle":
-                
-
                 mode1 = new ASR_mode1();
                 mode2 = new ASR_mode2();
                 currentMode = mode1;
@@ -48,17 +44,23 @@ public class Gun : MonoBehaviour, IThrow
                 break;
             case "CrossBow":
                 mode1 = GetComponent<CrossBowMode1>();
-                currentMode = mode1;
+                currentMode = new BulletArmorBreaker(mode1);
                 break;
             case "RocketLauncher":
                 mode1 = GetComponent<RockeLaunderMode>();
                 currentMode = mode1;
                 break;
         }
+        currentAmmo = guntype.MaxCapacity;
+
+       
+        AllAmmoleft = guntype.MaxAmmoCanTake;
     }
    
     public void OnThrow()
     {
+        gunSource = null;
+        GameEvent.OnGunUpgrade -= RefreshGunStats;
         StartCoroutine(Throwed());
     }
     
@@ -134,6 +136,7 @@ public class Gun : MonoBehaviour, IThrow
     }
     private IEnumerator Throwed()
     {
+      
         gameObject.layer = 7;
         if(gameObject.GetComponent<Rigidbody>() == null )
         {
@@ -159,5 +162,28 @@ public class Gun : MonoBehaviour, IThrow
             return guntype.AmmoType;
         }
         return null;
+    }
+    public int GetEffectiveMaxAmmocantake()
+    {
+        return (gunSource != null)
+            ? gunSource.GetMaxAmmoCanTake(guntype.MaxAmmoCanTake)
+            : guntype.MaxAmmoCanTake;
+    }
+    public void SetupGunSource()
+    {
+        
+        if (transform.root.CompareTag("Player"))
+        {
+            gunSource = new PlayerGunAdpater(this.guntype);
+         
+            AllAmmoleft = GetEffectiveMaxAmmocantake();
+          
+        }
+    }
+    public void RefreshGunStats()
+    {
+        if (gunSource == null) return;
+        AllAmmoleft = GetEffectiveMaxAmmocantake();
+        GameEvent.UpdateAmmo?.Invoke();
     }
 }

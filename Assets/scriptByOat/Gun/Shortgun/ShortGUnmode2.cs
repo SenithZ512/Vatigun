@@ -9,7 +9,7 @@ public class ShortGUnmode2 : MonoBehaviour, IGun
     public string ModeName => _modename;
 
   
-    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit)
+    public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
 
         Gundata.FireRate = _config.Firerate;

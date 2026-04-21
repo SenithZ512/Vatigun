@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.GraphicsBuffer;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour, IpoolObject 
@@ -11,7 +12,7 @@ public class Bullet : MonoBehaviour, IpoolObject
     [SerializeField] private float damage;
     [SerializeField] private Transform Firepoint;
     private Rigidbody rb;
-
+    private IVisitor _extraVisitor;
 
     private bool _isCrit;
     public void Setup(float dmg, bool crit)
@@ -25,6 +26,8 @@ public class Bullet : MonoBehaviour, IpoolObject
    
     private void OnTriggerEnter(Collider collision)
     {
+      
+        if (collision.CompareTag("Bullet")) return;
         if (gunTypeSo.GunTypename == "RocketLauncher")
         {
             Objectpool.Instance.SpawnFromPool(Explode, transform.position, transform.rotation);
@@ -43,9 +46,18 @@ public class Bullet : MonoBehaviour, IpoolObject
             DamageVisitor DmgVistit = new DamageVisitor(damage);
             _damage.Accept(DmgVistit);
             gameObject.SetActive(false);
-            if (_isCrit) Debug.Log("BOOM! CRITICAL HIT!");
+            //if (_isCrit) Debug.Log("BOOM! CRITICAL HIT!");
+            if (_extraVisitor != null)
+            {
+                _damage.Accept(_extraVisitor);
+              
+            }
         }
         gameObject.SetActive(false);
+    }
+    public void SetExtraVisitor(IVisitor visitor)
+    {
+        _extraVisitor = visitor;
     }
     public void OnobjectSpawn()
     {
