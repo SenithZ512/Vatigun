@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Currency : MonoBehaviour
 {
-    public static int currency = 0;
+    public static int currentcurrency =1000;
 
     public void IncreastCurrency(int amount)
     {
-        currency += amount;
+        currentcurrency += amount;
     }
 }

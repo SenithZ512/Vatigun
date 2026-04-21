@@ -33,7 +33,7 @@ public class UpdateAmmoUI : MonoBehaviour
         ammomaxleft.text = " / " +_gun.AllAmmoleft.ToString();
 
 
-        gunmode.text = _gun.currentMode.GetType().Name;
+        gunmode.text = _gun.currentMode.ModeName;
     }
     public void ClearHud()
     {

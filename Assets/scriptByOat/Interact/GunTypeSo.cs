@@ -12,4 +12,5 @@ public class GunTypeSo : ScriptableObject
     public int MaxCapacity;
     public int MaxAmmoCanTake;
     public float ReloadTime = 2f;
+    public int AmmoBonusPerLevel = 20;
 }

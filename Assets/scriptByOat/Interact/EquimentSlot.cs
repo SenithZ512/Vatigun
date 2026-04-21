@@ -21,39 +21,67 @@ public class EquimentSlot : MonoBehaviour,IThrow
     private void Start()
     {
         held = GetComponent<HeldStatus>();
+        while (gunList.Count < 10)
+        {
+            gunList.Add(null);
+        }
     }
     public void AddGun(GameObject newGun)
     {
-        if (gunList.Count < 10) 
-        {
-            gunList.Add(newGun);
-            Gun gunScript = newGun.GetComponent<Gun>();
+        Gun gunScript = newGun.GetComponent<Gun>();
+        if (gunScript == null || gunScript.guntype == null) return;
 
+        
+        int targetIndex = GetTargetIndexBySO(gunScript.guntype);
+
+        if (targetIndex != -1 && targetIndex < gunList.Count)
+        {
+         
+            if (gunList[targetIndex] != null)
+            {
+                Destroy(gunList[targetIndex]);
+            }
+
+           
+            gunList[targetIndex] = newGun;
+
+            newGun.transform.SetParent(HoldingPoint.transform);
+            newGun.transform.localPosition = Vector3.zero;
+            newGun.transform.localRotation = Quaternion.identity;
+
+            gunScript.SetupGunSource();
+            newGun.SetActive(false);
+            if(CurrentHolding == null) OnHoldGun(targetIndex);
             GameEvent.UpdateAmmo?.Invoke();
-            if (HoldingPoint)
-                newGun.SetActive(false);
+         
         }
-       
+
     }
     private void Update()
     {
-        
+
         for (int i = 0; i < gunList.Count && i < 9; i++)
         {
-            
             if (Input.GetKeyDown(KeyCode.Alpha1 + i))
             {
-                if (currentindex != i)
+                
+                if (gunList[i] != null)
                 {
-                    previousIndex = currentindex;
+                    if (currentindex != i) previousIndex = currentindex;
+                    OnHoldGun(i);
+                    GameEvent.UpdateAmmo?.Invoke();
                 }
-                OnHoldGun(i);
-               
-                GameEvent.UpdateAmmo?.Invoke();
-                break; 
+                break;
             }
         }
-        if(CurrentHolding!= null)
+        float scroll = Input.GetAxis("Mouse ScrollWheel");
+        if (scroll != 0)
+        {
+           
+            int direction = scroll > 0 ? 1 : -1;
+            SwitchGunByScroll(direction);
+        }
+        if (CurrentHolding!= null)
         {
             Gun currentGun = CurrentHolding.GetComponent<Gun>();
           
@@ -127,34 +155,31 @@ public class EquimentSlot : MonoBehaviour,IThrow
     private void OnHoldGun(int index)
 
     {
-        if (index < 0 || index >= gunList.Count) return;
+        if (index < 0 || index >= gunList.Count || gunList[index] == null) return;
 
-        Debug.Log(CurrentHolding);
         for (int i = 0; i < gunList.Count; i++)
-    {
+        {
+            if (gunList[i] == null) continue;
+
             if (i == index)
             {
-                bool currentState = !gunList[i].gameObject.activeSelf;
-                gunList[i].gameObject.SetActive(currentState);
+                bool currentState = !gunList[i].activeSelf;
+                gunList[i].SetActive(currentState);
                 if (currentState)
                 {
-                   
-                    CurrentHolding = gunList[index].gameObject;
+                    CurrentHolding = gunList[index];
                     currentindex = i;
-                  
                 }
                 else
                 {
                     CurrentHolding = null;
+                    currentindex = -1;
                     ammoUI.ClearHud();
                 }
-                
-               
             }
             else
             {
-              ammoUI.ClearHud();
-                gunList[i].gameObject.SetActive(false);
+                gunList[i].SetActive(false);
             }
         }
 
@@ -187,18 +212,21 @@ public class EquimentSlot : MonoBehaviour,IThrow
     }
     public void OnThrow()
     {
+        if (CurrentHolding == null) return;
+
         GameObject thrownGun = CurrentHolding;
         CurrentHolding.transform.SetParent(null);
         CurrentHolding.GetComponent<Gun>().OnThrow();
         CurrentHolding.GetComponent<Rigidbody>().AddForce(HoldingPoint.transform.forward * ThrowForce, ForceMode.Impulse);
         CurrentHolding.GetComponent<Collider>().enabled=true;
-        gunList.Remove(CurrentHolding);
+        gunList[currentindex] = null;
         CurrentHolding = null;
+        currentindex = -1;
         ammoUI.ClearHud();
     }
     public void ActivateCritBuff(float duration)
     {
-        StopAllCoroutines(); // ถ้าเก็บซ้ำให้รีเซ็ตเวลาใหม่
+        StopAllCoroutines();
         StartCoroutine(CritBuffRoutine(duration));
     }
 
@@ -209,5 +237,53 @@ public class EquimentSlot : MonoBehaviour,IThrow
         yield return new WaitForSeconds(duration);
         isCritHundredActive = false;
         Debug.Log("CRIT BUFF EXPIRED");
+    }
+    public void NotifyAllGunsUpgrade()
+    {
+        foreach (GameObject gunObj in gunList)
+        {
+            gunObj.GetComponent<Gun>().RefreshGunStats();
+        }
+    }
+    private int GetTargetIndexBySO(GunTypeSo type)
+    {
+        
+        if (type.GunTypename == "Pistol") return 0;
+        if (type.GunTypename == "ShotGun") return 1;
+        if (type.GunTypename == "AssaltRifle") return 2;
+        if (type.GunTypename == "CrossBow") return 3;
+        if (type.GunTypename == "RocketLauncher") return 4;
+        if (type.GunTypename == "Sword") return 5;
+
+       
+        for (int i = 0; i < gunList.Count; i++)
+        {
+            if (gunList[i] == null) return i;
+        }
+        return -1;
+    }
+    private void SwitchGunByScroll(int direction)
+    {
+      
+        bool hasAnyGun = false;
+        foreach (var g in gunList) if (g != null) hasAnyGun = true;
+        if (!hasAnyGun) return;
+
+        int nextIdx = currentindex;
+
+       
+        for (int i = 0; i < gunList.Count; i++)
+        {
+         
+            nextIdx = (nextIdx + direction + gunList.Count) % gunList.Count;
+
+            if (gunList[nextIdx] != null)
+            {
+                if (currentindex != nextIdx) previousIndex = currentindex;
+                OnHoldGun(nextIdx);
+                GameEvent.UpdateAmmo?.Invoke();
+                return; 
+            }
+        }
     }
 }

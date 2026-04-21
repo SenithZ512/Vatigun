@@ -8,13 +8,13 @@ public class STG_FillAmmo : MonoBehaviour, IEffectPickUp
     {
         foreach (GameObject gunObj in equid.gunList)
         {
-            
+            if(gunObj==null) continue;  
             Gun gunScript = gunObj.GetComponent<Gun>();
 
             if (gunScript != null)
             {
 
-                gunScript.AllAmmoleft = gunScript.guntype.MaxAmmoCanTake;
+                gunScript.AllAmmoleft = gunScript.GetEffectiveMaxAmmocantake();
 
                 GameEvent.UpdateAmmo?.Invoke();
             }

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CrossBowMode1 : MonoBehaviour,IGun
 { 
-    [SerializeField] private string _modename = "Pistolmode1";
+    [SerializeField] private string _modename = "CrossBow";
     public string ModeName => _modename;
 
    

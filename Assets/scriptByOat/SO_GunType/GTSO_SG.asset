@@ -19,3 +19,4 @@ MonoBehaviour:
   MaxCapacity: 8
   MaxAmmoCanTake: 60
   ReloadTime: 1
+  AmmoBonusPerLevel: 6

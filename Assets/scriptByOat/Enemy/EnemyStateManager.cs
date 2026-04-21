@@ -49,6 +49,10 @@ public class EnemyStateManager : MonoBehaviour
         currentStateName = currentState.GetType().Name;
         Debug.Log("in state"+ currentState);
     }
+    private void OnCollisionEnter(Collision collision)
+    {
+       
+    }
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;

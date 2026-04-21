@@ -20,11 +20,9 @@ public class STG_MaxHealth : MonoBehaviour, IEffectPickUp
 
             equid.held._health = maxH;
             equid.held._armor = maxA;
-
         }
         else
         {
-
             equid.held._health += Healtdrop;
             equid.held._armor += armordrop;
         }
@@ -32,5 +30,6 @@ public class STG_MaxHealth : MonoBehaviour, IEffectPickUp
         if (equid.held._armor > maxA) equid.held._armor = maxA;
 
         GameEvent.UpdatePLayerStatus?.Invoke();
+        Destroy(gameObject);
     }
 }

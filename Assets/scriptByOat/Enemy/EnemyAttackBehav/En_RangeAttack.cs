@@ -16,6 +16,7 @@ public class En_RangeAttack : MonoBehaviour, IAttackBehaviour
   
     public void Attack(EnemyStateManager state)
     {
+        state.rb.isKinematic = true;
         aim.Aim();
         _gun.ExecuteFire();
         _gun.currentAmmo += 1;

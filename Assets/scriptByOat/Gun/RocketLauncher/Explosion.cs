@@ -12,8 +12,7 @@ public class Explosion : MonoBehaviour
   
     public void Explode()
     {
-       
-       
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
 
         foreach (Collider hit in colliders)
@@ -57,7 +56,7 @@ public class Explosion : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        
+      
         Explode();
     }
     private void OnDrawGizmos()
