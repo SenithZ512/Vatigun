@@ -14832,6 +14832,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cracked floor
       objectReference: {fileID: 0}
+    - target: {fileID: 4000487044819679748, guid: 824bbc90ddedc254182d1dd0cf5da196, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5354681995664466311, guid: 824bbc90ddedc254182d1dd0cf5da196, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.8779068
@@ -15207,7 +15211,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222113674006905725, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.83
+      value: -4.019
       objectReference: {fileID: 0}
     - target: {fileID: 3222113674006905725, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
       propertyPath: m_LocalRotation.w
@@ -15236,6 +15240,26 @@ PrefabInstance:
     - target: {fileID: 3222113674006905725, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308767770177025311, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308767770177025311, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: InitialModule.startSize.minScalar
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308767770177025311, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: InitialModule.startSize.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308767770177025311, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: InitialModule.startSizeY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3308767770177025311, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: InitialModule.startSizeZ.minMaxState
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8840102272159341575, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
       propertyPath: m_Name
