@@ -10883,7 +10883,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2650671374982672727, guid: bc7bc367829c95e438c100d353250d0d, type: 3}
       propertyPath: startTime
-      value: 60
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2650671374982672727, guid: bc7bc367829c95e438c100d353250d0d, type: 3}
+      propertyPath: gameOverSceneIndex
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6076611981094938114, guid: bc7bc367829c95e438c100d353250d0d, type: 3}
       propertyPath: m_Pivot.x
@@ -11319,7 +11323,6 @@ GameObject:
   m_Component:
   - component: {fileID: 488709435}
   - component: {fileID: 488709437}
-  - component: {fileID: 488709436}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -11342,18 +11345,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1850160051}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &488709436
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 488709434}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de963bac4316b8419181237e621dde1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &488709437
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32501,7 +32492,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2096689042}
-  - component: {fileID: 2096689041}
   - component: {fileID: 2096689040}
   m_Layer: 0
   m_Name: GameObject
@@ -32531,18 +32521,6 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1.81, y: 1.22, z: 8.56}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &2096689041
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2096689039}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2de963bac4316b8419181237e621dde1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!4 &2096689042
 Transform:
   m_ObjectHideFlags: 0
