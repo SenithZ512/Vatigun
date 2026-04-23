@@ -17,6 +17,7 @@ TagManager:
   - Bullet
   - Enemy
   - Powerup
+  - Doll
   - 
   - 
   - 
@@ -35,9 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
+  - SeeThough
+  - Layermask
   - 
   m_SortingLayers:
   - name: Default

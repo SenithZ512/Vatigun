@@ -92,12 +92,12 @@ public class Gun : MonoBehaviour, IThrow
             {
                 critState = true;
                 damageToSend = guntype.Damage * 3f;
-                Debug.Log("player shoot");
+               
             }
         }
         else
         {
-            Debug.Log("enemy shoot");
+           
             critState = false;
             damageToSend = guntype.Damage;
         }

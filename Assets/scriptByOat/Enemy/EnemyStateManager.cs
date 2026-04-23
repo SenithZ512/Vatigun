@@ -11,7 +11,9 @@ public class EnemyStateManager : MonoBehaviour
     public ES_Attack _Attack = new ES_Attack();
     public ES_Stun _Stun = new ES_Stun();
     public ES_Death _Death = new ES_Death();
-   
+
+    public RagDollEneable _DollEneable;
+  
     [Header("AI Settings")]
     public float chaseRange = 10f;  
     public float attackRange = 2f; 
@@ -21,17 +23,32 @@ public class EnemyStateManager : MonoBehaviour
     [HideInInspector] public Animator anim;
     [HideInInspector] public Transform player;
     [HideInInspector] public Rigidbody rb;
+
+    public IAttackBehaviour[] attackBehaviours;
     private void Awake()
     {
+        attackBehaviours = GetComponents<IAttackBehaviour>();
+       anim = GetComponentInChildren<Animator>();
         agent = GetComponent<NavMeshAgent>();
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody>();
+        if (_DollEneable != null)
+        {
+            //_DollEneable = GetComponentInChildren<RagDollEneable>();
+        }
         currentState = _Idle;
     }
     private void Start()
     {
-       
-         currentState.OnEnterState(this);
+        foreach (var attackBehaviour in attackBehaviours)
+        {
+            Debug.Log(attackBehaviour.GetType());
+        }
+        if (_DollEneable != null)
+        {
+            _DollEneable.EnableAnimator();
+        }
+        currentState.OnEnterState(this);
     }
     private void Update()
     {

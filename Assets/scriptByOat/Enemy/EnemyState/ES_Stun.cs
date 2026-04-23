@@ -9,16 +9,30 @@ public class ES_Stun : EnemyBaseState
     public override void OnEnterState(EnemyStateManager state)
     {
         wasUsingAgent = state.agent.enabled;
+       
 
-        
         state.agent.enabled = false;
         state.rb.isKinematic = false;
-
+        if (state._DollEneable != null)
+        {
+            state._DollEneable.EnableRagdoll();
+        }
+        else
+        {
+        }
         stunRoutine = state.StartCoroutine(count(state));
     }
 
     public override void OnExitState(EnemyStateManager state)
     {
+        if (state._DollEneable != null)
+        {
+
+            state._DollEneable.EnableAnimator();
+        }
+        else
+        {
+        }
         state.rb.linearVelocity = Vector3.zero;
         state.rb.angularVelocity = Vector3.zero;
         Vector3 currentForward = state.transform.forward;
@@ -29,8 +43,10 @@ public class ES_Stun : EnemyBaseState
         }
         if (wasUsingAgent)
         {
+          
             state.agent.enabled = true;
             state.rb.isKinematic = true;
+         
         }
         else
         {
