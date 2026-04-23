@@ -50,7 +50,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 452417894713902623}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -174,8 +174,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStateName: 
   _DollEneable: {fileID: 1049130541083470197}
-  chaseRange: 18.44
-  attackRange: 4.65
+  chaseRange: 35.3
+  attackRange: 14.82
   moveSpeed: 5
   agent: {fileID: 0}
   anim: {fileID: 0}
@@ -259,6 +259,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b53ed8a4f4565e419126b7e43a98b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Tolayer:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!136 &4755806799601063806
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -400,7 +403,7 @@ Transform:
   m_GameObject: {fileID: 8665768437588150122}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.114, z: 1.17}
+  m_LocalPosition: {x: 0, y: 1.2, z: 1.17}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1196,6 +1199,7 @@ MonoBehaviour:
   Animator: {fileID: 1381844000183959207}
   RagdollRoot: {fileID: 5778377378800189491}
   StartRagdoll: 0
+  Hipbody: {fileID: 0}
 --- !u!114 &1527379528331091013
 MonoBehaviour:
   m_ObjectHideFlags: 0

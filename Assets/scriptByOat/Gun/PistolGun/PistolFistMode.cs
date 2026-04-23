@@ -22,7 +22,7 @@ public class PistolFistMode : MonoBehaviour, IGun
            
            
                 bulletScript.Setup(finalDamage, isCrit);
-
+                bulletScript.SetOwner(this.gameObject);
 
                 bulletScript.OnobjectSpawn();
             

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
+using static UnityEngine.UI.GridLayoutGroup;
 
 [RequireComponent(typeof(Rigidbody))]
 public class Bullet : MonoBehaviour, IpoolObject 
@@ -13,12 +14,16 @@ public class Bullet : MonoBehaviour, IpoolObject
     [SerializeField] private Transform Firepoint;
     private Rigidbody rb;
     private IVisitor _extraVisitor;
-
+    private int _ownerLayer;
     private bool _isCrit;
     public void Setup(float dmg, bool crit)
     {
         damage = dmg;
         _isCrit = crit;
+    }
+    public void SetOwner(GameObject obj)
+    {
+        _ownerLayer = obj.transform.root.gameObject.layer;
     }
 
    
@@ -28,6 +33,7 @@ public class Bullet : MonoBehaviour, IpoolObject
     {
       
         if (collision.CompareTag("Bullet")) return;
+        if (collision.gameObject.layer == _ownerLayer) return;
         if (gunTypeSo.GunTypename == "RocketLauncher")
         {
             Objectpool.Instance.SpawnFromPool(Explode, transform.position, transform.rotation);

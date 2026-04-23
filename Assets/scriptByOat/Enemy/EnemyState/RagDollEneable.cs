@@ -13,6 +13,7 @@ public class RagDollEneable : MonoBehaviour
     private CharacterJoint[] Joints;
     private Collider[] Colliders;
 
+    public Rigidbody Hipbody;
     private void Awake()
     {
         Rigidbodies = RagdollRoot.GetComponentsInChildren<Rigidbody>();
@@ -72,6 +73,31 @@ public class RagDollEneable : MonoBehaviour
             rigidbody.detectCollisions = false;
             rigidbody.useGravity = false;
         }
+    }
+    public void EnableRagdollDeath()
+    {
+
+        Animator.enabled = false;
+        //if (GetComponentInParent<CapsuleCollider>() != null)
+        //    GetComponentInParent<CapsuleCollider>().enabled = false;
+        foreach (Rigidbody rigidbody in Rigidbodies)
+        {
+            rigidbody.isKinematic = false;
+           
+            rigidbody.detectCollisions = true;
+            rigidbody.useGravity = true;
+        }
+        foreach (CharacterJoint joint in Joints)
+        {
+            joint.enableCollision = false;
+        }
+        foreach (Collider collider in Colliders)
+        {
+            collider.enabled = true;
+            
+        }
+
+       
     }
 
 }

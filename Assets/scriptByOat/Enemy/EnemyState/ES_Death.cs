@@ -11,7 +11,7 @@ public class ES_Death : EnemyBaseState
         if (state._DollEneable != null)
         {
 
-            state._DollEneable.EnableRagdoll();
+            state._DollEneable.EnableRagdollDeath();
         }
         else
         {

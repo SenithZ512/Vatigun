@@ -50,15 +50,20 @@ public class ES_Attack : EnemyBaseState
                     return;
                 }
             }
-            foreach (var behaviour in state.attackBehaviours)
+            else
             {
-               
-                behaviour.Attack(state);
-             
+
             }
+                foreach (var behaviour in state.attackBehaviours)
+                {
+
+                    behaviour.Attack(state);
+
+                }
             state.anim.ResetTrigger("Attack");
             state.anim.SafeSetTrigger("Attack");
         }
+        
 
     }
 }
