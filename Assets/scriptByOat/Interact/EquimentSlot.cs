@@ -199,7 +199,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
             
             int nextIndex = (currentindex + 1 + i) % gunList.Count;
             Gun nextGun = gunList[nextIndex].GetComponent<Gun>();
-
+            if (nextGun == null) continue ;
             if (nextGun.currentAmmo > 0 || nextGun.AllAmmoleft > 0)
             {
                 OnHoldGun(nextIndex);
@@ -242,6 +242,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
     {
         foreach (GameObject gunObj in gunList)
         {
+            if(gunObj == null) continue;
             gunObj.GetComponent<Gun>().RefreshGunStats();
         }
     }

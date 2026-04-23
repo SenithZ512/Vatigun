@@ -68,7 +68,7 @@ public class Bullet : MonoBehaviour, IpoolObject
     }
     IEnumerator dissaper()
     {
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(4f);
         gameObject.SetActive(false);
     }
 }

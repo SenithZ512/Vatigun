@@ -8,8 +8,15 @@ public class ES_Death : EnemyBaseState
     {
        state.rb.isKinematic = false;
        state.agent.enabled = false;
-      
-       
+        if (state._DollEneable != null)
+        {
+
+            state._DollEneable.EnableRagdoll();
+        }
+        else
+        {
+        }
+
         state.StartCoroutine(dissaper(state));
     }
 

@@ -9,12 +9,14 @@ public class ES_Chase : EnemyBaseState
     public override void OnEnterState(EnemyStateManager state)
     {
         chase = state.gameObject.GetComponent<IEnemyChase>();
+        state.anim.SafeSetBool("Isrun", true);
     }
 
 
     public override void OnExitState(EnemyStateManager state)
     {
         if (state.agent.isOnNavMesh) state.agent.ResetPath();
+       
     }
 
 

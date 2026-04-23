@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 609494317113389534}
   - component: {fileID: 6291963863005860166}
   m_Layer: 7
-  m_Name: PistolBullet_prefab
+  m_Name: FireBall
   m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -236,6 +236,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3222113674006905725, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988378935652475624, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3988378935652475624, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}
+      propertyPath: prewarm
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8840102272159341575, guid: 9e89105552c56fb4097253c71c71dbb2, type: 3}

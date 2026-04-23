@@ -7,7 +7,7 @@ public class ES_Attack : EnemyBaseState
     private IAttackBehaviour[] _attackBehaviour;
     public override void OnEnterState(EnemyStateManager state)
     {
-      
+       
         _attackBehaviour = state.gameObject.GetComponents<IAttackBehaviour>();
     
     }
@@ -41,10 +41,23 @@ public class ES_Attack : EnemyBaseState
         }
         if (_attackBehaviour != null)
         {
-            foreach (var behaviour in _attackBehaviour)
+            if (state.anim != null)
             {
-                behaviour.Attack(state);
+                var stateInfo = state.anim.GetCurrentAnimatorStateInfo(0);
+
+                if (state.anim.IsInTransition(0) || (stateInfo.IsName("Attack") && stateInfo.normalizedTime < 0.9f))
+                {
+                    return;
+                }
             }
+            foreach (var behaviour in state.attackBehaviours)
+            {
+               
+                behaviour.Attack(state);
+             
+            }
+            state.anim.ResetTrigger("Attack");
+            state.anim.SafeSetTrigger("Attack");
         }
 
     }
