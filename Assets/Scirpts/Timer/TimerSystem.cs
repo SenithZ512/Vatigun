@@ -49,7 +49,7 @@ public class TimerSystem : MonoBehaviour
     {
         if (Instance != null && Instance != this) { Destroy(gameObject); return; }
         Instance = this;
-        DontDestroyOnLoad(gameObject); // ข้ามScene ได้
+        
     }
 
     void Start()
