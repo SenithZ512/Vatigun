@@ -454,8 +454,8 @@ MonoBehaviour:
   airControlMultiplier: 0.3
   groundFriction: 12
   airFriction: 0.5
-  jumpForce: 10
-  doubleJumpForce: 14
+  jumpForce: 7
+  doubleJumpForce: 10
   gravity: -25
   fallMultiplier: 2.2
   slideForce: 14
@@ -464,7 +464,7 @@ MonoBehaviour:
   slideFriction: 1.5
   slideSpeedThreshold: 3
   cameraHolder: {fileID: 4324934816596344219}
-  sprintSpeed: 40
+  sprintSpeed: 20
   sprintFOV: 90
   normalFOV: 60
   fovTransitionSpeed: 8
@@ -564,6 +564,7 @@ MonoBehaviour:
   _health: 0
   _armor: 0
   _speed: 0
+  isPlayer: 0
 --- !u!114 &2205716396420213414
 MonoBehaviour:
   m_ObjectHideFlags: 0
