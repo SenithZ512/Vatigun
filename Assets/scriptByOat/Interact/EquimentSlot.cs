@@ -98,7 +98,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
                     currentGun.currentAmmo = 0;
                     GameEvent.UpdateAmmo?.Invoke();
 
-                    SwitchToNextAvailableGun();
+                  //  SwitchToNextAvailableGun();
                     return;
                 }
                 currentGun.GetComponent<Gun>().ExecuteFire();
@@ -132,12 +132,16 @@ public class EquimentSlot : MonoBehaviour,IThrow
             _gun.GetComponent<Rigidbody>().isKinematic = true;
             AddGun(_gun.gameObject);
         }
-        if (collision.gameObject.TryGetComponent<IEffectPickUp>(out IEffectPickUp effectPickUp))
+       
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.TryGetComponent<IEffectPickUp>(out IEffectPickUp effectPickUp))
         {
             effectPickUp.Onpickup(this);
         }
     }
-  
+
     public void SwapToPreviousGun()
     {
       

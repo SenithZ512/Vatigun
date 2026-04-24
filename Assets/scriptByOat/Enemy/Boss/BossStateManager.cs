@@ -10,6 +10,8 @@ public class BossStateManager : MonoBehaviour
     public Boss_attack _Attack = new Boss_attack();
     public Boss_Summon _Summon = new Boss_Summon();
     public Boss_stun _stun = new Boss_stun();
+    public Boss_death _death = new Boss_death();
+    public Boss_shoot _Shoot = new Boss_shoot();
     private AimatPlayer aim;
     public RagDollEneable _DollEneable;
 
@@ -21,6 +23,8 @@ public class BossStateManager : MonoBehaviour
     [HideInInspector] public Transform player;
     [HideInInspector] public Rigidbody rb;
 
+
+    public int timecount = 0;
     private void Awake()
     {
      aim = GetComponent<AimatPlayer>();
@@ -43,7 +47,7 @@ public class BossStateManager : MonoBehaviour
     }
     private void Update()
     {
-        aim.AimLock();
+      
         currentState.OnUpdateState(this);
 
     }

@@ -7,7 +7,10 @@ public class Boss_Idle : IBossState
     private float random;
     public override void OnEnterState(BossStateManager boss)
     {
+        count = 0;
+        boss.anim.SafeSetTrigger("IsIdle");
        random = Random.Range(3f,6f);
+       
     }
 
     public override void OnExitState(BossStateManager boss)
@@ -20,8 +23,18 @@ public class Boss_Idle : IBossState
         count+=1 * Time.deltaTime;
 
         if (count < random) return;
-        boss.SwitchState(boss._Summon);
-        
-        
+
+        if(boss.timecount == 2)
+        {
+            boss.SwitchState(boss._Summon);
+            boss.timecount = 0;
+        }
+        else
+        {
+            boss.SwitchState(boss._Shoot);
+        }
+      
+      
+
     }
 }

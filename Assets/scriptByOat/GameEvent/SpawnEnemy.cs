@@ -35,11 +35,5 @@ public class SpawnEnemy : MonoBehaviour
         }
     }
    
-    private void OnGUI()
-    {
-        if (GUILayout.Button("Spawn"))
-        {
-            CallSpawnAarmy();
-        }
-    }
+   
 }

@@ -17,6 +17,8 @@ public class Gun : MonoBehaviour, IThrow
 
     private IGunSource gunSource ;
 
+    private AudioSource audio;
+    public AudioClip clip;
     private bool Isreload;
     private void Start()
     {
@@ -25,8 +27,8 @@ public class Gun : MonoBehaviour, IThrow
             switch (Type)
         {
             case "AssaltRifle":
-                mode1 = new ASR_mode1();
-                mode2 = new ASR_mode2();
+                mode1 = GetComponent <ASR_mode1>();
+                mode2 = GetComponent<ASR_mode2>();
                 currentMode = mode1;
                 break;
             case "Pistol":
@@ -54,11 +56,16 @@ public class Gun : MonoBehaviour, IThrow
                 mode1 = GetComponent<EnemyBallFire>();
                 currentMode = mode1;
                 break;
+            case "Sword":
+                mode1 = GetComponent<Excalibur>();
+                currentMode = mode1;
+                break;
+                
         }
         currentAmmo = guntype.MaxCapacity;
 
-       
-        AllAmmoleft = guntype.MaxAmmoCanTake;
+        audio = GetComponent<AudioSource>();
+         AllAmmoleft = guntype.MaxAmmoCanTake;
     }
    
     public void OnThrow()
@@ -109,9 +116,10 @@ public class Gun : MonoBehaviour, IThrow
         currentMode.shoot(GunPoint, guntype, damageToSend, critState);
         FirerateCount = Time.time + guntype.FireRate;
         currentAmmo--;
-       
+        audio.PlayOneshotNow(clip);
 
-       
+
+
     }
     public void SwitchMode()
     {
@@ -156,8 +164,15 @@ public class Gun : MonoBehaviour, IThrow
     }
     public void Addammo(int amount)
     {
-        AllAmmoleft += amount;
-      
+       
+        int maxLimit = GetEffectiveMaxAmmocantake();
+
+        
+        AllAmmoleft = Mathf.Min(AllAmmoleft + amount, maxLimit);
+
+       
+        GameEvent.UpdateAmmo?.Invoke();
+
     }
     public AmmoTypeSO GetAmmoType()
     {
@@ -190,4 +205,5 @@ public class Gun : MonoBehaviour, IThrow
         AllAmmoleft = GetEffectiveMaxAmmocantake();
         GameEvent.UpdateAmmo?.Invoke();
     }
+   
 }

@@ -12,32 +12,37 @@ public class TakeAmmo : MonoBehaviour, IAmmo,IEffectPickUp
    
     public void TakeTheAmmo()
     {
-        Destroy(gameObject);
+       
     }
 
     public void Onpickup(EquimentSlot equid)
     {
         if (equid != null) 
         {
-            bool wasAmmoAdded = false;
+            bool wasAnyAmmoAdded = false;
             foreach (GameObject gunObject in equid.gunList)
             {
                 if (gunObject == null) continue;
                 if (gunObject.TryGetComponent<Gun>(out Gun gunScript))
                 {
-                  
                     if (gunScript.GetAmmoType() == _ammoType)
                     {
-                        gunScript.Addammo(_ammoAmount);
-                        wasAmmoAdded = true;
-                        if (equid.CurrentHolding == gunObject)
+                        // เช็คก่อนว่ากระสุนในปืนกระบอกนี้เต็มหรือยัง
+                        int maxAllowed = gunScript.GetEffectiveMaxAmmocantake();
+                        if (gunScript.AllAmmoleft < maxAllowed)
                         {
-                            GameEvent.UpdateAmmo?.Invoke();
+                            gunScript.Addammo(_ammoAmount);
+                            wasAnyAmmoAdded = true;
+
+                            if (equid.CurrentHolding == gunObject)
+                            {
+                                GameEvent.UpdateAmmo?.Invoke();
+                            }
                         }
                     }
                 }
             }
-            if (wasAmmoAdded) TakeTheAmmo();
+            Destroy(gameObject);
         }
     }
 }

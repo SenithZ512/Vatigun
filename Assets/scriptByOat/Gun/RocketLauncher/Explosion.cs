@@ -11,13 +11,17 @@ public class Explosion : MonoBehaviour
     [SerializeField] private Collider[] colliders;
     [SerializeField]private LayerMask layerMask;
     private bool hasExploded = false;
+
+    private AudioSource aduip;
     public void Explode()
     {
+        aduip = GetComponent <AudioSource>();
+
         if (hasExploded) return; 
         hasExploded = true;     
         colliders = Physics.OverlapSphere(transform.position, explosionRadius, layerMask);
         HashSet<IElement> damagedElements = new HashSet<IElement>();
-
+        aduip.PlaySoundNow();
         foreach (Collider hit in colliders)
         {
             if (hit.gameObject == gameObject) continue;
@@ -46,7 +50,17 @@ public class Explosion : MonoBehaviour
                             enemyStateManager.SwitchState(enemyStateManager._Stun);
                     }
                 }
+
+                if (hit.TryGetComponent<BossStateManager>(out BossStateManager boss))
+                {
+                    if (boss.currentState != boss._death)
+                    {
+
+                        boss.SwitchState(boss._stun);
+                    }
+                }
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, 3f);
+               
             }
         }
     }

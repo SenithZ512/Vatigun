@@ -18,6 +18,7 @@ public class ES_Death : EnemyBaseState
         }
 
         state.StartCoroutine(dissaper(state));
+     
     }
 
     public override void OnExitState(EnemyStateManager state)
