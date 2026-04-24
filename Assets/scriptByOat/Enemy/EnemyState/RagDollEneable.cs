@@ -65,6 +65,8 @@ public class RagDollEneable : MonoBehaviour
         }
         foreach (Collider collider in Colliders)
         {
+            if (collider.gameObject.GetComponent<Melee>()||
+     collider.gameObject.name.Contains("DamgaeHtibox")) continue;
             collider.enabled = false;
         }
       

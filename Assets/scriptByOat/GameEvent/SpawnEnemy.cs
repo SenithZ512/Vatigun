@@ -1,25 +1,40 @@
+using NUnit.Framework;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemy : MonoBehaviour
 {
-    [SerializeField] private string Tagname;
-    [SerializeField] private int amount;
-    [SerializeField] private float spawndelay =1f;
-    private void CallSpawnAarmy()
+    [System.Serializable]
+    public class Stack
+    {
+        public string  Tagname;
+        public int amount;
+        public float spawndelay;
+    }
+    public List<Stack> stacks;
+    public Dictionary<string, Queue<GameObject>> StackDic;
+
+    public void CallSpawnAarmy()
     {
        StartCoroutine(SpawnAarmy());
     }
+   
     private IEnumerator SpawnAarmy()
     {
-        for (int i = 0; i < amount; i++)
+        foreach (Stack stack in stacks)
         {
-            Vector3 randomPos = transform.position + new Vector3(Random.Range(-1f, 1f), 0, Random.Range(-1f, 1f));
-            Objectpool.Instance.SpawnFromPool(Tagname, randomPos, transform.rotation);
+           
+            for (int i = 0; i < stack.amount; i++)
+            {
+                Vector3 randomPos = transform.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
+                Objectpool.Instance.SpawnFromPool(stack.Tagname, randomPos, transform.rotation);
+                yield return new WaitForSeconds(stack.spawndelay);
+            }
 
-            yield return new WaitForSeconds(spawndelay);
         }
     }
+   
     private void OnGUI()
     {
         if (GUILayout.Button("Spawn"))

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 using static UnityEngine.UI.GridLayoutGroup;
@@ -49,6 +50,7 @@ public class Bullet : MonoBehaviour, IpoolObject
         if (collision.gameObject.TryGetComponent<IElement>(out IElement _damage))
         {
             //Objectpool.Instance.SpawnFromPool("Blood", transform.position, transform.rotation);
+            //Objectpool.Instance.SpawnFromPool("BloodSplash", collision.gameObject.transform.forward, collision.gameObject.transform.rotation);
             DamageVisitor DmgVistit = new DamageVisitor(damage);
             _damage.Accept(DmgVistit);
             gameObject.SetActive(false);

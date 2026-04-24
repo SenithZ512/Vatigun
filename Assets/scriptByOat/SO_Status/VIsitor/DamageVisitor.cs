@@ -5,11 +5,17 @@ using UnityEngine;
 public class DamageVisitor : IVisitor
 {
     private float _dmgamount;
-   
+    private Vector3 _hitPoint;
     public DamageVisitor (float amount)
     {
         _dmgamount = amount;
        
+    }
+    public DamageVisitor(float amount, Vector3 hitPoint)
+    {
+        _dmgamount = amount;
+        _hitPoint = hitPoint;
+
     }
     public void Visit(HeldStatus heldstatus)
     {
@@ -35,7 +41,8 @@ public class DamageVisitor : IVisitor
             
             heldstatus._health -= _dmgamount;
         }
-         if(heldstatus._health < 0) { heldstatus._health = 0; }
+        Vector3 spawnPos = heldstatus.transform.position + (heldstatus.transform.forward * 0.5f);
+        Objectpool.Instance.SpawnFromPool("BloodSplash", spawnPos, heldstatus.transform.rotation);
         GameEvent.UpdatePLayerStatus?.Invoke();
         //Debug.Log("Healt " + heldstatus._health+"armor "+ heldstatus._armor);
     }

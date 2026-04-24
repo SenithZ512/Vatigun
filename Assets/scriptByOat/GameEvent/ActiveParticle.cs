@@ -20,7 +20,7 @@ public class ActiveParticle : MonoBehaviour
         {
             ParticleSystem practice = t.GetComponent<ParticleSystem>();
             if (practice != null)
-            {
+            { 
                 practice.Stop();
                 particlesobj.Add(practice.gameObject);
             }

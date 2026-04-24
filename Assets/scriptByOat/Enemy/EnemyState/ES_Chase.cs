@@ -9,6 +9,7 @@ public class ES_Chase : EnemyBaseState
     public override void OnEnterState(EnemyStateManager state)
     {
         chase = state.gameObject.GetComponent<IEnemyChase>();
+     
         state.anim.SafeSetBool("Isrun", true);
     }
 

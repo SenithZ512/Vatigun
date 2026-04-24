@@ -36,6 +36,7 @@ public class ES_Attack : EnemyBaseState
 
         if (distance > state.attackRange&& distance <= state.chaseRange)
         {
+          
             state.SwitchState(state._Chase);
             return;
         }
@@ -49,21 +50,22 @@ public class ES_Attack : EnemyBaseState
                 {
                     return;
                 }
+                state.anim.ResetTrigger("Attack");
+                state.anim.SafeSetTrigger("Attack");
+              
+               
             }
-            else
-            {
-
-            }
-                foreach (var behaviour in state.attackBehaviours)
+            
+           
+            foreach (var behaviour in state.attackBehaviours)
                 {
 
                     behaviour.Attack(state);
 
                 }
-            state.anim.ResetTrigger("Attack");
-            state.anim.SafeSetTrigger("Attack");
+          
         }
-        
+       
 
     }
 }

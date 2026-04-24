@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 161905967976569336}
   - component: {fileID: 1289458510230055015}
   - component: {fileID: 2107029205867736096}
-  - component: {fileID: 747511286673768050}
+  - component: {fileID: 7815682579630282658}
   m_Layer: 0
   m_Name: gun
   m_TagString: Untagged
@@ -104,11 +104,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc9587bd6b8849a4cade34525df5c5b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  guntype: {fileID: 11400000, guid: 4c4b52b943b137848ae2d17e6e1e49a3, type: 2}
+  guntype: {fileID: 11400000, guid: bdcad229dff05284584d756f4327db77, type: 2}
   GunPoint: {fileID: 3786180433428677617}
   currentAmmo: 0
   AllAmmoleft: 0
---- !u!114 &747511286673768050
+--- !u!114 &7815682579630282658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,10 +117,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 452417894713902623}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b538a3a824a906b4a871c42a8027ecd1, type: 3}
+  m_Script: {fileID: 11500000, guid: 6401f4a16e599834aa35533c20f7c362, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: 
-  _modename: Pistolmode1
+  m_EditorClassIdentifier: Assembly-CSharp::EnemyBallFire
+  _modename: BallFire
 --- !u!1 &2639217524878458213
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,9 +259,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5b53ed8a4f4565e419126b7e43a98b79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Tolayer:
-    serializedVersion: 2
-    m_Bits: 1024
 --- !u!136 &4755806799601063806
 CapsuleCollider:
   m_ObjectHideFlags: 0
