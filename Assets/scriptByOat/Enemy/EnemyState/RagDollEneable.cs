@@ -47,7 +47,7 @@ public class RagDollEneable : MonoBehaviour
        
         foreach (Rigidbody rigidbody in Rigidbodies)
         {
-            rigidbody.velocity = Vector3.zero;
+            rigidbody.linearVelocity = Vector3.zero;
             rigidbody.detectCollisions = true;
             rigidbody.useGravity = true;
         }
