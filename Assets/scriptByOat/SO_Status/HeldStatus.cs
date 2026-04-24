@@ -1,9 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEditor;
 using UnityEngine;
-
+[RequireComponent(typeof(AudioSource))]
 public class HeldStatus : MonoBehaviour,IElement
 {
     public SO_Status status;
@@ -11,10 +11,14 @@ public class HeldStatus : MonoBehaviour,IElement
     public float _armor ; 
     public float _speed ;
     private IOndeath ondeath;
+    public AudioSource auido;
+    public AudioClip clip;
     public IStatusSource _statusSource { get; private set; }
     public bool isPlayer = false;
     private void Start()
     {
+        auido = GetComponent<AudioSource>();
+        auido.spatialBlend = 0.6f;
         if (isPlayer)
             _statusSource = new PlayerUpgradeAdapter(status);
         else

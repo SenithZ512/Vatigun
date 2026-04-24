@@ -19,7 +19,6 @@ public class RockeLaunderMode : MonoBehaviour,IGun
            
                 bulletScript.Setup(finalDamage, isCrit);
                 bulletScript.SetOwner(this.gameObject);
-
                 bulletScript.OnobjectSpawn();
             
             

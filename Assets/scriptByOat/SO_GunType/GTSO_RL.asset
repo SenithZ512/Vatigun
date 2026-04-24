@@ -15,7 +15,7 @@ MonoBehaviour:
   GunTypename: RocketLauncher
   AmmoType: {fileID: 11400000, guid: 2b8b179bd9e8a644c83b5d2d2ad4a503, type: 2}
   Damage: 10
-  FireRate: 3
+  FireRate: 1
   MaxCapacity: 1
   MaxAmmoCanTake: 10
   ReloadTime: 0.2

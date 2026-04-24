@@ -1,0 +1,74 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8135789153956739949
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5424874780856980770}
+  - component: {fileID: 5090268059176718910}
+  m_Layer: 0
+  m_Name: ObjectPool
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5424874780856980770
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135789153956739949}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -9.991672, y: -5.223156, z: -6.628907}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5090268059176718910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8135789153956739949}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 69c985384abb6084da653e28b9c66354, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pools:
+  - tag: PistolBullet
+    prefab: {fileID: 5280628625639740457, guid: aa84c107d06aa9b468115309c0062538, type: 3}
+    size: 20
+  - tag: RocketBullet
+    prefab: {fileID: 5280628625639740457, guid: db42875534dd47e4b9ec5efa5b9e354d, type: 3}
+    size: 10
+  - tag: Explode
+    prefab: {fileID: 9221776008597814854, guid: 93caaf38b81cd3d41bde1ba906be1c14, type: 3}
+    size: 10
+  - tag: RangeEnemy
+    prefab: {fileID: 0}
+    size: 300
+  - tag: BloodSplash
+    prefab: {fileID: 5827666533291903835, guid: 72ec9a3792d26a948835c41ff99c069c, type: 3}
+    size: 100
+  - tag: FireBall
+    prefab: {fileID: 5280628625639740457, guid: 3594c83b75a6db042bde81291b3ec313, type: 3}
+    size: 350
+  - tag: Summonerenemy
+    prefab: {fileID: 6462682817871498966, guid: 2514b7f94712fc842a47800ab5025c08, type: 3}
+    size: 100
+  - tag: FlyingEnemy
+    prefab: {fileID: 325460242912293820, guid: f918a9ec59f56a941803a7a9b122cdea, type: 3}
+    size: 300
+  - tag: MeleeEnemy
+    prefab: {fileID: 7366326402423765937, guid: 295eb1b6c4a89784b89d1d189f7b7274, type: 3}
+    size: 300

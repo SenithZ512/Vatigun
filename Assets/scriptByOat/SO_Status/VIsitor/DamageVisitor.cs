@@ -43,6 +43,7 @@ public class DamageVisitor : IVisitor
         }
         Vector3 spawnPos = heldstatus.transform.position + (heldstatus.transform.forward * 0.5f);
         Objectpool.Instance.SpawnFromPool("BloodSplash", spawnPos, heldstatus.transform.rotation);
+        heldstatus.auido.PlayOneshotNow(heldstatus.clip);
         GameEvent.UpdatePLayerStatus?.Invoke();
         //Debug.Log("Healt " + heldstatus._health+"armor "+ heldstatus._armor);
     }

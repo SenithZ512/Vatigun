@@ -13,30 +13,47 @@ public class DropItem : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
        
-      
+
+
     }
-    private void explode()
+    public void explode()
     {
         foreach (Transform child in transform)
         {
-            Rigidbody childRb = child.gameObject.GetComponent<Rigidbody>();
+         
+    
 
-            if (childRb == null)
+           
+            if (!child.TryGetComponent<Magnet>(out Magnet mgch))
+            {
+                mgch = child.gameObject.AddComponent<Magnet>();
+            }
+
+            if (!child.TryGetComponent<Rigidbody>(out Rigidbody childRb))
             {
                 childRb = child.gameObject.AddComponent<Rigidbody>();
             }
+
+          
+            childRb.velocity = Vector3.zero;
+            childRb.angularVelocity = Vector3.zero;
+            childRb.useGravity = false; 
+
+        
             childRb.AddExplosionForce(force, transform.position, radious, 0);
 
+           
+            mgch.StartAttraction();
         }
-
+      
 
     }
     private void OnGUI()
     {
-       // if (GUILayout.Button("Explode"))
-        //{
-       //     explode();
-      //  }
+      if (GUILayout.Button("Explode"))
+       {
+           explode();
+       }
     }
     private void OnDrawGizmos()
     {

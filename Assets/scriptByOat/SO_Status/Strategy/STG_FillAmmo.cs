@@ -18,6 +18,7 @@ public class STG_FillAmmo : MonoBehaviour, IEffectPickUp
 
                 GameEvent.UpdateAmmo?.Invoke();
             }
+            Destroy(gameObject);
             
         }
 

@@ -10,6 +10,17 @@ public class ASR_mode1 : MonoBehaviour, IGun
 
     public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
-        Debug.Log("ASR_mod1");
+        GameObject bulletObj = Objectpool.Instance.SpawnFromPool("PistolBullet", gunpoint.position, gunpoint.rotation);
+
+
+        if (bulletObj.TryGetComponent<Bullet>(out Bullet bulletScript))
+        {
+
+            bulletScript.Setup(finalDamage, isCrit);
+            bulletScript.SetOwner(this.gameObject);
+            bulletScript.OnobjectSpawn();
+
+
+        }
     }
 }
