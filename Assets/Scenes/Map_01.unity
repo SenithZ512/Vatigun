@@ -4144,6 +4144,18 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 1414495024}
+    - target: {fileID: 5027265681895814130, guid: 25584f8f0fe44ec498c86c1b3e3c4e7f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.6693687
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027265681895814130, guid: 25584f8f0fe44ec498c86c1b3e3c4e7f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2.2276227
+      objectReference: {fileID: 0}
+    - target: {fileID: 5027265681895814130, guid: 25584f8f0fe44ec498c86c1b3e3c4e7f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.38984525
+      objectReference: {fileID: 0}
     - target: {fileID: 6929869269549666520, guid: 25584f8f0fe44ec498c86c1b3e3c4e7f, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
@@ -8424,6 +8436,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5634843205579668383, guid: ad882a5f68ec58849b898a9bf6cb7f98, type: 3}
+      propertyPath: zipSpeed
+      value: 100
+      objectReference: {fileID: 0}
     - target: {fileID: 6314672565368025527, guid: ad882a5f68ec58849b898a9bf6cb7f98, type: 3}
       propertyPath: m_Name
       value: Player
