@@ -269,17 +269,26 @@ public class EquimentSlot : MonoBehaviour,IThrow
     }
     private void SwitchGunByScroll(int direction)
     {
-      
+        // เช็คว่ามีปืนสักกระบอกไหม
         bool hasAnyGun = false;
-        foreach (var g in gunList) if (g != null) hasAnyGun = true;
-        if (!hasAnyGun) return;
-
-        int nextIdx = currentindex;
-
-       
+        int firstAvailableIndex = -1;
         for (int i = 0; i < gunList.Count; i++)
         {
-         
+            if (gunList[i] != null)
+            {
+                hasAnyGun = true;
+                if (firstAvailableIndex == -1) firstAvailableIndex = i;
+            }
+        }
+
+        if (!hasAnyGun) return;
+
+      
+        int startIdx = (currentindex == -1) ? firstAvailableIndex : currentindex;
+        int nextIdx = startIdx;
+
+        for (int i = 0; i < gunList.Count; i++)
+        {
             nextIdx = (nextIdx + direction + gunList.Count) % gunList.Count;
 
             if (gunList[nextIdx] != null)
@@ -287,7 +296,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
                 if (currentindex != nextIdx) previousIndex = currentindex;
                 OnHoldGun(nextIdx);
                 GameEvent.UpdateAmmo?.Invoke();
-                return; 
+                return;
             }
         }
     }

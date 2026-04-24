@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UpdtaeHelthplayer : MonoBehaviour
 {
@@ -20,12 +21,14 @@ public class UpdtaeHelthplayer : MonoBehaviour
     {
         GameEvent.UpdatePLayerStatus -= GUIUPDATE;
     }
+   
     private void GUIUPDATE()
     {
-       
+
         health = held._health;
         armour = held._armor;
-        HealthUi.text = "Health:"+health.ToString();
-        ArmourUi.text = "Armor:"+armour.ToString();
+        HealthUi.text = health.ToString();
+        ArmourUi.text = armour.ToString();
+
     }
 }

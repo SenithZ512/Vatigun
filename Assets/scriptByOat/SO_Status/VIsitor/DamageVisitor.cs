@@ -27,6 +27,7 @@ public class DamageVisitor : IVisitor
             {
                
                 heldstatus._armor -= _dmgamount;
+                GameEvent.UpdatePLayerStatus?.Invoke();
             }
             else
             {
@@ -34,12 +35,14 @@ public class DamageVisitor : IVisitor
                 float remainingDamage = _dmgamount - heldstatus._armor;
                 heldstatus._armor = 0;
                 heldstatus._health -= remainingDamage;
+                GameEvent.UpdatePLayerStatus?.Invoke();
             }
         }
         else
         {
             
             heldstatus._health -= _dmgamount;
+            GameEvent.UpdatePLayerStatus?.Invoke();
         }
         Vector3 spawnPos = heldstatus.transform.position + (heldstatus.transform.forward * 0.5f);
         Objectpool.Instance.SpawnFromPool("BloodSplash", spawnPos, heldstatus.transform.rotation);

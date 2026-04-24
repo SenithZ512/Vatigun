@@ -7,7 +7,7 @@ public class Excalibur : MonoBehaviour,IGun
 
     public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
-        GameObject bulletObj = Objectpool.Instance.SpawnFromPool("RocketBullet", gunpoint.position, gunpoint.rotation);
+        GameObject bulletObj = Objectpool.Instance.SpawnFromPool("SwordTail", gunpoint.position, gunpoint.rotation);
         if (bulletObj.TryGetComponent<Bullet>(out Bullet bulletScript))
         {
 

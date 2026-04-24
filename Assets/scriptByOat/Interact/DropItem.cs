@@ -48,13 +48,7 @@ public class DropItem : MonoBehaviour
       
 
     }
-    private void OnGUI()
-    {
-      if (GUILayout.Button("Explode"))
-       {
-           explode();
-       }
-    }
+   
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
