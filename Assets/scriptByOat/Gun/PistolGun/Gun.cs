@@ -50,6 +50,10 @@ public class Gun : MonoBehaviour, IThrow
                 mode1 = GetComponent<RockeLaunderMode>();
                 currentMode = mode1;
                 break;
+            case "BallFire":
+                mode1 = GetComponent<EnemyBallFire>();
+                currentMode = mode1;
+                break;
         }
         currentAmmo = guntype.MaxCapacity;
 
@@ -92,12 +96,12 @@ public class Gun : MonoBehaviour, IThrow
             {
                 critState = true;
                 damageToSend = guntype.Damage * 3f;
-                Debug.Log("player shoot");
+               
             }
         }
         else
         {
-            Debug.Log("enemy shoot");
+           
             critState = false;
             damageToSend = guntype.Damage;
         }

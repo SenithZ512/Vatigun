@@ -8,6 +8,7 @@ public class ES_Idle : EnemyBaseState
     public override void OnEnterState(EnemyStateManager state)
     {
         idle = state.gameObject.GetComponent<IEnemyIdleBehave>();
+        state.anim.SafeSetBool("Isrun", false);
     }
 
     public override void OnExitState(EnemyStateManager state)
@@ -30,6 +31,7 @@ public class ES_Idle : EnemyBaseState
         //state.agent.SetDestination(state.player.position);
         if (distance <= state.chaseRange)
         {
+           
             state.SwitchState(state._Chase);
         }
        

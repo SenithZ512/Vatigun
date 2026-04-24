@@ -8,57 +8,55 @@ public class Explosion : MonoBehaviour
     [SerializeField] private float explosionRadius = 5f;
     [SerializeField] private float explosionDamage = 150f;
     [SerializeField] private float explosionForce = 700f;
-
-  
+    [SerializeField] private Collider[] colliders;
+    [SerializeField]private LayerMask layerMask;
+    private bool hasExploded = false;
     public void Explode()
     {
-
-        Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
+        if (hasExploded) return; 
+        hasExploded = true;     
+        colliders = Physics.OverlapSphere(transform.position, explosionRadius, layerMask);
+        HashSet<IElement> damagedElements = new HashSet<IElement>();
 
         foreach (Collider hit in colliders)
         {
-            if (hit.gameObject == gameObject)
-            {
-                hit.enabled = false;
-                
-               
-            }
+            if (hit.gameObject == gameObject) continue;
 
+           
             if (hit.TryGetComponent<IElement>(out IElement element))
             {
-             
-                DamageVisitor dmgVisitor = new DamageVisitor(explosionDamage);
-                element.Accept(dmgVisitor);
+                if (!damagedElements.Contains(element))
+                {
+                    DamageVisitor dmgVisitor = new DamageVisitor(explosionDamage);
+                    element.Accept(dmgVisitor);
+                    damagedElements.Add(element);
+                }
             }
 
+        
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                if (rb.gameObject == gameObject)
+              
+                if (hit.TryGetComponent<EnemyStateManager>(out EnemyStateManager enemyStateManager))
                 {
-                    rb.isKinematic = true;
-                  
-                }
-                if(rb.gameObject.TryGetComponent<EnemyStateManager>(out EnemyStateManager enemyStateManager))
-                {
-                    if (enemyStateManager.currentState != null && enemyStateManager.currentState != enemyStateManager._Death)
+                    if (enemyStateManager.currentState != enemyStateManager._Death)
                     {
-                        enemyStateManager.SwitchState(enemyStateManager._Stun);
+                       
+                            enemyStateManager.SwitchState(enemyStateManager._Stun);
                     }
                 }
-           
-                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius,3f);
+                rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, 3f);
             }
         }
-
     }
-  
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-      
         Explode();
     }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.red;
@@ -66,12 +64,13 @@ public class Explosion : MonoBehaviour
     }
     private void OnEnable()
     {
+        hasExploded = false;
         if (TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
-            
-            rb.isKinematic = false;
+          
             rb.linearVelocity = Vector3.zero;
             rb.angularVelocity = Vector3.zero;
+            rb.isKinematic = true;
         }
 
         
@@ -83,6 +82,7 @@ public class Explosion : MonoBehaviour
 
         StartCoroutine(Dissapear());
     }
+   
 
     private IEnumerator Dissapear()
     {

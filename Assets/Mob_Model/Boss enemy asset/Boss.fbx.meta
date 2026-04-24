@@ -1,13 +1,54 @@
 fileFormatVersion: 2
-<<<<<<< Updated upstream
-guid: b464446f7a4c7ce49a5382c1bc2d5114
-=======
-guid: f43463660318c2b4cab718dda2bcaea1
->>>>>>> Stashed changes
+guid: 1ca287108915cba439d6f4d361c93821
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arma
+    second: {fileID: 2100000, guid: ef8c2af3b5117cf42b470dfe302a1080, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: arma 3
+    second: {fileID: 2100000, guid: 7731a4bbe72cd4e49b82eeee2d98333b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armadura 3
+    second: {fileID: 2100000, guid: 0d2fa57395e051949815df2a85af4aa2, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: armadura pt 2
+    second: {fileID: 2100000, guid: a8c4339e2a271aa45bf4b976a1fad92f, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: brazales
+    second: {fileID: 2100000, guid: ee33e6620418bb9419ce0bb972c32dc9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: casco
+    second: {fileID: 2100000, guid: 937b7a2d782f47c4a91e974e159c1725, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuernos
+    second: {fileID: 2100000, guid: 7137da1470a6cad4b9e28147b6a1fd45, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: cuerpo.001
+    second: {fileID: 2100000, guid: 5993ba470a3794e4fbd0a356c06fb0a5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: parte de armadura
+    second: {fileID: 2100000, guid: 6860071ce2cfa934eab042b57e866c57, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -26,7 +67,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -98,13 +139,13 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 1
   remapMaterialsIfMaterialImportModeIsNone: 0

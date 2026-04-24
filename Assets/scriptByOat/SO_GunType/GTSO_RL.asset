@@ -18,5 +18,5 @@ MonoBehaviour:
   FireRate: 3
   MaxCapacity: 1
   MaxAmmoCanTake: 10
-  ReloadTime: 1
+  ReloadTime: 0.2
   AmmoBonusPerLevel: 2

@@ -12,6 +12,18 @@ public class RockeLaunderMode : MonoBehaviour,IGun
 
     public void shoot(Transform gunpoint, GunTypeSo Gundata, float finalDamage, bool isCrit, IVisitor extraVisitor = null)
     {
-        Objectpool.Instance.SpawnFromPool("RocketBullet", gunpoint.position, gunpoint.rotation);
+     GameObject bulletObj =   Objectpool.Instance.SpawnFromPool("RocketBullet", gunpoint.position, gunpoint.rotation);
+     if (bulletObj.TryGetComponent<Bullet>(out Bullet bulletScript))
+        {
+           
+           
+                bulletScript.Setup(finalDamage, isCrit);
+                bulletScript.SetOwner(this.gameObject);
+
+                bulletScript.OnobjectSpawn();
+            
+            
+        }
+       
     }
 }

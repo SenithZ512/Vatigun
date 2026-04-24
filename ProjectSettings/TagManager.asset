@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - Bullet
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -11,6 +13,13 @@ TagManager:
   - 
   - Water
   - UI
+  - Player
+  - Bullet
+  - Enemy
+  - Powerup
+  - Doll
+  - 
+  - Screen
   - 
   - 
   - 
@@ -27,15 +36,8 @@ TagManager:
   - 
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - LayerMask
-  - SeeThrough
+  - SeeThough
+  - Layermask
   - 
   m_SortingLayers:
   - name: Default

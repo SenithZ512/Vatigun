@@ -17,4 +17,12 @@ public class AimatPlayer : MonoBehaviour
     {
         transform.LookAt(m_Player.position);
     }
+    public void AimLock()
+    {
+        Vector3 targetPostition = new Vector3(m_Player.position.x,
+                                         transform.position.y,
+                                         m_Player.position.z);
+
+        transform.LookAt(targetPostition);
+    }
 }

@@ -454,8 +454,8 @@ MonoBehaviour:
   airControlMultiplier: 0.3
   groundFriction: 12
   airFriction: 0.5
-  jumpForce: 7
-  doubleJumpForce: 10
+  jumpForce: 10
+  doubleJumpForce: 14
   gravity: -25
   fallMultiplier: 2.2
   slideForce: 14
@@ -464,7 +464,7 @@ MonoBehaviour:
   slideFriction: 1.5
   slideSpeedThreshold: 3
   cameraHolder: {fileID: 4324934816596344219}
-  sprintSpeed: 20
+  sprintSpeed: 40
   sprintFOV: 90
   normalFOV: 60
   fovTransitionSpeed: 8
@@ -487,7 +487,7 @@ MonoBehaviour:
   gunTip: {fileID: 5044111358093084189}
   whatIsGrappleable:
     serializedVersion: 2
-    m_Bits: 1
+    m_Bits: 257
   lr: {fileID: 7671009032876762255}
   maxGrappleDistance: 100
   grappleDelayTime: 0
@@ -564,7 +564,7 @@ MonoBehaviour:
   _health: 0
   _armor: 0
   _speed: 0
-  isPlayer: 0
+  isPlayer: 1
 --- !u!114 &2205716396420213414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -597,7 +597,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RayCastPlayer
   Distance: 10
-  Key: 101
+  Key: 102
 --- !u!1 &7247064675615921414
 GameObject:
   m_ObjectHideFlags: 0
@@ -613,7 +613,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &520417189785789501
 Transform:
   m_ObjectHideFlags: 0
