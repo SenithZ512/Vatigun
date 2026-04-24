@@ -35,7 +35,7 @@ public class DropItem : MonoBehaviour
             }
 
           
-            childRb.velocity = Vector3.zero;
+            childRb.linearVelocity = Vector3.zero;
             childRb.angularVelocity = Vector3.zero;
             childRb.useGravity = false; 
 

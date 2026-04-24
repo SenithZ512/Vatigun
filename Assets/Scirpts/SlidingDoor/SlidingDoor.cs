@@ -45,16 +45,20 @@ public class SlidingDoor : MonoBehaviour
 
     void Update()
     {
-        if (player == null) return;
+        // Auto-find player ถ้ายังไม่มี (เช่น spawn ทีหลัง)
+        if (player == null)
+        {
+            GameObject go = GameObject.FindWithTag("Player");
+            if (go != null) player = go.transform;
+            else return;
+        }
 
         float dist = Vector3.Distance(transform.position, player.position);
-
         if (!_isOpen && dist <= openRadius)
             Open();
         else if (_isOpen && dist > closeRadius)
             ScheduleClose();
     }
-
     // ========== DOOR CONTROL ==========
 
     public void Open()

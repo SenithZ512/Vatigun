@@ -4274,17 +4274,9 @@ PrefabInstance:
       propertyPath: ammoUI
       value: 
       objectReference: {fileID: 403274630}
-    - target: {fileID: 5227245171261078501, guid: ad882a5f68ec58849b898a9bf6cb7f98, type: 3}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 6314672565368025527, guid: ad882a5f68ec58849b898a9bf6cb7f98, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6605743667765186892, guid: ad882a5f68ec58849b898a9bf6cb7f98, type: 3}
-      propertyPath: sprintSpeed
-      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 9063719465382780314, guid: ad882a5f68ec58849b898a9bf6cb7f98, type: 3}
       propertyPath: m_LocalPosition.x
