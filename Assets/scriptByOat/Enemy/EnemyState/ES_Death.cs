@@ -16,7 +16,7 @@ public class ES_Death : EnemyBaseState
         else
         {
         }
-
+        GameEvent.IncreaseTime?.Invoke();
         state.StartCoroutine(dissaper(state));
      
     }

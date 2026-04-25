@@ -18,7 +18,7 @@ public class HeldStatus : MonoBehaviour,IElement
     private void Start()
     {
         auido = GetComponent<AudioSource>();
-        auido.spatialBlend = 0.6f;
+        auido.spatialBlend = 0.63f;
         if (isPlayer)
             _statusSource = new PlayerUpgradeAdapter(status);
         else

@@ -134,7 +134,14 @@ public class TimerSystem : MonoBehaviour
         if (_currentTime > warningThreshold)
             _warningFired = false;
     }
-
+    private void OnEnable()
+    {
+        GameEvent.IncreaseTime += OnEnemyKilled;
+    }
+    private void OnDisable()
+    {
+        GameEvent.IncreaseTime -= OnEnemyKilled;
+    }
     public void OnEnemyKilled()
     {
         AddTime(timePerKill);

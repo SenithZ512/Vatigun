@@ -24,11 +24,22 @@ public class SpawnEnemy : MonoBehaviour
     {
         foreach (Stack stack in stacks)
         {
-           
+
             for (int i = 0; i < stack.amount; i++)
             {
+                // คำนวณจุดเกิดแบบสุ่มรอบๆ จุดสปอน
                 Vector3 randomPos = transform.position + new Vector3(Random.Range(-5f, 5f), 0, Random.Range(-5f, 5f));
-                Objectpool.Instance.SpawnFromPool(stack.Tagname, randomPos, transform.rotation);
+
+                // ใช้ randomPos แทน gameObject.transform.position
+                GameObject enemy = Objectpool.Instance.SpawnFromPool(stack.Tagname, randomPos, transform.rotation);
+
+                // สำคัญมาก: ถ้าศัตรูมี NavMeshAgent ต้องสั่ง Warp ไปที่ตำแหน่งที่ถูกต้อง
+                var agent = enemy.GetComponent<UnityEngine.AI.NavMeshAgent>();
+                if (agent != null)
+                {
+                    agent.Warp(randomPos);
+                }
+
                 yield return new WaitForSeconds(stack.spawndelay);
             }
 

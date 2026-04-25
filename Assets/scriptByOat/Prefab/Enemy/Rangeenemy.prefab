@@ -275,7 +275,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentStateName: 
   _DollEneable: {fileID: 1049130541083470197}
-  chaseRange: 35.3
+  chaseRange: 500
   attackRange: 14.82
   moveSpeed: 5
   agent: {fileID: 0}
@@ -697,15 +697,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 716c71172d560544eb7abd102470299d, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 716c71172d560544eb7abd102470299d, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 716c71172d560544eb7abd102470299d, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.8
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 716c71172d560544eb7abd102470299d, type: 3}
       propertyPath: m_LocalPosition.x

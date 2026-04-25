@@ -10,5 +10,6 @@ public static  class GameEvent
     public static Action<float> CriticalActive;
     public static Action OnGunUpgrade;
     public static Action OnUpgrade;
+    public static Action IncreaseTime;
 }
 
