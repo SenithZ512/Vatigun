@@ -16,7 +16,8 @@ public class EquimentSlot : MonoBehaviour,IThrow
     private int previousIndex;
     public HeldStatus held;
 
-
+    public AudioClip kept;
+    public AudioSource audio;
     public bool isCritHundredActive = false;
     private void Start()
     {
@@ -25,13 +26,14 @@ public class EquimentSlot : MonoBehaviour,IThrow
         {
             gunList.Add(null);
         }
+        audio = GetComponent<AudioSource>();
     }
     public void AddGun(GameObject newGun)
     {
         Gun gunScript = newGun.GetComponent<Gun>();
         if (gunScript == null || gunScript.guntype == null) return;
+        audio.PlayOneshotNow(kept);
 
-        
         int targetIndex = GetTargetIndexBySO(gunScript.guntype);
 
         if (targetIndex != -1 && targetIndex < gunList.Count)
@@ -131,6 +133,7 @@ public class EquimentSlot : MonoBehaviour,IThrow
 
             _gun.GetComponent<Rigidbody>().isKinematic = true;
             AddGun(_gun.gameObject);
+
         }
        
     }
@@ -138,13 +141,14 @@ public class EquimentSlot : MonoBehaviour,IThrow
     {
         if (other.gameObject.TryGetComponent<IEffectPickUp>(out IEffectPickUp effectPickUp))
         {
+            audio.PlayOneshotNow(kept);
             effectPickUp.Onpickup(this);
         }
     }
 
     public void SwapToPreviousGun()
     {
-      
+        audio.PlayOneshotNow(kept);
         if (gunList.Count > 1 && previousIndex < gunList.Count)
         {
             int tempIndex = currentindex; 

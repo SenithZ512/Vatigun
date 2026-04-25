@@ -5,6 +5,6 @@ public class PlayerOndeath : MonoBehaviour, IOndeath
 {
     public void OnDeath()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 }
