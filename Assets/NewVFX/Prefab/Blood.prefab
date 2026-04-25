@@ -9759,6 +9759,7 @@ GameObject:
   - component: {fileID: 4894726840361470265}
   - component: {fileID: 1215585185842835482}
   - component: {fileID: 1378184113990619514}
+  - component: {fileID: 4974521095538294846}
   m_Layer: 0
   m_Name: Blood
   m_TagString: Untagged
@@ -14644,3 +14645,16 @@ ParticleSystemRenderer:
   m_MeshWeighting1: 1
   m_MeshWeighting2: 1
   m_MeshWeighting3: 1
+--- !u!114 &4974521095538294846
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5827666533291903835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 395460260d39c6147b3617251d0b5884, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Disapear
+  delay: 3
